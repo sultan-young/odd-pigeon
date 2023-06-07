@@ -4,6 +4,8 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 
+process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
+
 const createWindow = () => {
   // 创建浏览窗口
   const mainWindow = new BrowserWindow({
@@ -17,6 +19,8 @@ const createWindow = () => {
   // 加载 index.html
   // mainWindow.loadFile('index.html')
   mainWindow.loadURL('http://localhost:8080/')
+
+  mainWindow.webContents.openDevTools();
 
   // 打开开发工具
 //   mainWindow.webContents.openDevTools()
