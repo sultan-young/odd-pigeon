@@ -15,7 +15,8 @@ const createWindow = () => {
   })
 
   // 加载 index.html
-  mainWindow.loadFile('index.html')
+  // mainWindow.loadFile('index.html')
+  mainWindow.loadURL('http://localhost:8080/')
 
   // 打开开发工具
 //   mainWindow.webContents.openDevTools()
