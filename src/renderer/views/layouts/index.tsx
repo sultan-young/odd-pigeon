@@ -6,6 +6,7 @@ import { Sidebar } from '@/views/sidebar'
 console.log(location.href)
 
 export function Layout() {
+  
   return (
     <div className={styles.layout}>
       <div className={styles.sidebar}>
@@ -14,8 +15,6 @@ export function Layout() {
       <div className={styles.extra}>
         <Outlet></Outlet>
       </div>
-      {/* <div className={styles['main-panel']}>
-      </div> */}
     </div>
   )
 }

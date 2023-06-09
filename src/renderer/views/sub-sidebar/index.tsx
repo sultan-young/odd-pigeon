@@ -1,21 +1,22 @@
-import React from 'react'
-import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
+import React, { useMemo, useState } from 'react'
+import { Link, NavLink, Outlet, useLocation, useParams } from 'react-router-dom'
 import styles from './index.module.less'
+import { MENUS_TREE } from '@/menu';
 
 export function SubSidebar() {
-  let { state } = useLocation()
-  const menuData = state.menuData
-  const children = menuData.children || []
-  console.log('state: ', children.length)
+  let { sidebar } = useParams();
+  const sideMenus = MENUS_TREE.children || [];
+  const target = sideMenus.find(item => item.key === sidebar);
+  const featureMenus = target?.children || [];
 
   return (
     <div className={styles.wrap}>
       <div className={styles['sub-sidebar']}>
-        {!children.length
-          ? menuData.content
-          : children.map((menu: any) => (
+        {!featureMenus.length
+          ? target?.content
+          : featureMenus.map((menu: any) => (
               <li key={menu.key}>
-                <NavLink to={menu.key} state={{ menus: menu.children }}>
+                <NavLink to={menu.key}>
                   {menu.title}
                 </NavLink>
               </li>

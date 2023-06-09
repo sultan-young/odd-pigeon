@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
+    "loadsh": "^0.0.4",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "^6.11.2",
