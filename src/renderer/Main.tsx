@@ -10,9 +10,6 @@ import {
   Routes,
   Route,
 } from 'react-router-dom'
-import { Layout } from './views/layouts'
-import { SubSidebar } from '@/views/sub-sidebar'
-import { MainPanel } from './views/main-panel'
 import { App } from './App'
 import { Gpt } from './features/GPT'
 import { Tools } from './features/Tools'
