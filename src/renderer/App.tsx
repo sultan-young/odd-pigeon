@@ -98,7 +98,7 @@ export function App() {
         />
       </Sider>
       <Layout>
-        <Content style={{ margin: '0 16px' }}>
+        <Content>
           <Outlet></Outlet>
         </Content>
       </Layout>
