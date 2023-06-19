@@ -12,18 +12,15 @@ export function Gpt() {
   useEffect(() => {
     console.log(11111)
     apiServer.post('/api/openAi/chat').then(res => {
-      if (res.data) {
-        console.log(res)
-        setChatList(res.data.data)
-      }
+      setChatList(res.data)
     })
   }, [])
 
   return (
     <div className="gpt-container">
       <main className="gpt-main-container">
-        {chatList.map((chatItem) => (
-          <ChatItem chatVO={chatItem} />
+        {chatList.map((chatItem, index) => (
+          <ChatItem chatVO={chatItem} key={index}/>
         ))}
       </main>
       <div className="gpt-footer-container">
