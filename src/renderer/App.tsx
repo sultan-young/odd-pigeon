@@ -81,7 +81,7 @@ export function App() {
   }
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout style={{height: '100%'}}>
       <Sider
         collapsible
         collapsed={collapsed}
@@ -97,7 +97,7 @@ export function App() {
           onClick={onClickMenuItem}
         />
       </Sider>
-      <Layout>
+      <Layout style={{height: '100%'}}>
         <Content>
           <Outlet></Outlet>
         </Content>

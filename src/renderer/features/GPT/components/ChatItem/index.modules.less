@@ -1,0 +1,29 @@
+@import url('@/styles/color.less');
+
+.wrap {
+    display: flex;
+    padding: 8px;
+    .chat-container {
+        display: flex;
+        flex-direction: column;
+        .chat-container-main {
+            margin-top: 10px;
+            display: flex;
+            .text {
+                --tw-bg-opacity: 1;
+                padding: 12px;
+                border-radius: 0.375rem;
+                color: @theme-text-color;
+                background-color: @theme-bg-color;
+
+            }
+        }
+    }
+    .action {
+        color: @theme-sub-text-color;
+        display: flex;
+    }
+    .padding {
+        width: 20px;
+    }
+}

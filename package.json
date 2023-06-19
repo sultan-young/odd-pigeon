@@ -43,6 +43,7 @@
     "webpack-dev-server": "^4.9.0"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.1.4",
     "antd": "^5.6.1",
     "electron-squirrel-startup": "^1.0.0",
     "loadsh": "^0.0.4",
