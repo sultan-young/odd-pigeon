@@ -4,7 +4,7 @@ import { Input } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
 import { ChatItem } from './components/ChatItem'
 import { ChatVO, Role } from './types'
-import apiServer from '@/services'
+import apiServer from '@/services/apis'
 
 export function Gpt() {
   const [chatList, setChatList] = useState<ChatVO[]>([])

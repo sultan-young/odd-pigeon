@@ -16,6 +16,7 @@ import { Tools } from './features/Tools'
 import { Md5 } from './features/Tools/Md5'
 import { UrlParse } from './features/Tools/UrlParse'
 import { Today } from './features/TODO/Today'
+import './services/shortcutKey'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 const router = createHashRouter([
@@ -64,6 +65,5 @@ const router = createHashRouter([
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} fallbackElement={<>失败了</>}/> 
-    {/* <RouterProvider router={router} fallbackElement={<>失败了</>}/> */}
   </React.StrictMode>
 )

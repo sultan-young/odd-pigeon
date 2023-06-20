@@ -81,27 +81,27 @@ export function App() {
   }
 
   return (
-    <Layout style={{height: '100%'}}>
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={(value) => setCollapsed(value)}
-      >
-        <Menu
-          theme="dark"
-          mode="inline"
-          openKeys={openKeys}
-          selectedKeys={selectedKeys}
-          onOpenChange={onOpenChange}
-          items={items}
-          onClick={onClickMenuItem}
-        />
-      </Sider>
-      <Layout style={{height: '100%'}}>
-        <Content>
-          <Outlet></Outlet>
-        </Content>
-      </Layout>
-    </Layout>
+    // <Layout style={{height: '100%'}}>
+    //   <Sider
+    //     collapsible
+    //     collapsed={collapsed}
+    //     onCollapse={(value) => setCollapsed(value)}
+    //   >
+    //     <Menu
+    //       theme="dark"
+    //       mode="inline"
+    //       openKeys={openKeys}
+    //       selectedKeys={selectedKeys}
+    //       onOpenChange={onOpenChange}
+    //       items={items}
+    //       onClick={onClickMenuItem}
+    //     />
+    //   </Sider>
+    //   <Layout style={{height: '100%'}}>
+    //     <Content>
+           <Outlet></Outlet>
+    //     </Content>
+    //   </Layout>
+    // </Layout>
   )
 }
