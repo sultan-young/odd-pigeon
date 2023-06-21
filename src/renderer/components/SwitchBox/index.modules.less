@@ -20,20 +20,71 @@
     grid-gap: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     .item {
-      background-color: #fff;
-      width: 60px;
-      height: 60px;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s ease-in-out;
+      width: 80px;
+      height: 80px;
       border-radius: 10px;
+      transition: transform 0.2s ease-in-out;
+      cursor: pointer;
+    }
+    .app-item {
+      background-color: #fff;
+      text-align: center;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .item:hover {
+    .app-item:hover {
       transform: scale(1.2);
+    }
+    .app-item--mini-wrap {
+      box-sizing: border-box;
+      overflow: hidden;
+      width: 33.3%;
+      height: 31%;
+      border-right: 3px solid transparent;
+      border-top: 3px solid transparent;
+    }
+    .app-item--mini-wrap:nth-child(3n + 3) {
+        border-right: none;
+    }
+    .app-item--mini-wrap:nth-child(-n+3) {
+      border-top: none;
+    }
+    .app-item--mini {
+      background-color: #fff;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      transition: transform 0.1s ease-in-out;
+    }
+    .app-item--mini:hover {
+      transform: scale(1.3);
+      background-color: rgb(171, 223, 226);
+    }
+
+    .app-container {
+      box-sizing: border-box;
+      background: repeating-radial-gradient(transparent, rgba(0, 0, 0, 0.3));
+      transition: transform 0.3s ease-in-out;
+      width: 80px;
+      min-height: 80px;
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      overflow: auto;
+    }
+    .app-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .app-container:hover {
+        transform: scale(2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
     }
   }
 }

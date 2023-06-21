@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './index.modules.less'
 import { CopyOutlined, RedoOutlined } from '@ant-design/icons'
 import { ChatVO, Role } from '../../types'
-console.log('styles: ', styles)
 
 interface IProps {
   chatVO: ChatVO
