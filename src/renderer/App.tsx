@@ -7,7 +7,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons'
 import type { MenuProps } from 'antd'
-import { Layout, Menu, Modal, theme } from 'antd'
+import { Layout, Menu, Modal, Progress, theme } from 'antd'
 import { MenuInfo } from './types/antd.type'
 import { Outlet, useLocation, useMatch, useMatches } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
@@ -51,7 +51,6 @@ export const App = () => {
   const [selectedKeys, setSelectedKeys] = useState(['GPT'])
   const [fns, contextHolder] = openSwitchBoxPortal()
 
-
   const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
     // 查找最新打开的
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1)
@@ -63,12 +62,15 @@ export const App = () => {
     const shortCutKeyService = new ShortCutKeyService();
     shortCutKeyService.registerLongPressEvent({
       keycode: 'Meta', 
-      triggerTime: 300, 
+      triggerTime: 400, 
       trigger: () => {
         fns.open()
       }, 
       progress: (progress) => {
-        // console.log(`当前进度---${progress}`)
+        fns.setProgress(Math.ceil(progress * 100))
+      },
+      cancel() {
+        fns.destroyProgress()
       }
     })
 
@@ -115,7 +117,6 @@ export const App = () => {
     //   <Layout style={{height: '100%'}}>
     //     <Content>
     <>
-    
       {contextHolder}
       <Outlet></Outlet>
     </>

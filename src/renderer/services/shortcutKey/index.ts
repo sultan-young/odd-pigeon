@@ -26,6 +26,7 @@ interface IRegisterLongPressEvent {
   triggerTime: number;
   trigger: (event: KeyboardEvent) => void;
   progress?: (progress: number) => void;
+  cancel?: () => void;
 }
 
 class ShortCutKeyService {
@@ -36,7 +37,7 @@ class ShortCutKeyService {
       this.listenerArea = listenerArea;
     }
   }
-  registerLongPressEvent({keycode, triggerTime, trigger, progress}: IRegisterLongPressEvent) {
+  registerLongPressEvent({keycode, triggerTime, trigger, progress, cancel}: IRegisterLongPressEvent) {
     // 用来处理长按抬起后再次按下无法触发快捷键的问题
     let triggerLock = true
 
@@ -45,14 +46,17 @@ class ShortCutKeyService {
       filter((event) => event.key === keycode)
     )
 
-    const progressTimer$ = timer(0, 100)
+    const progressTimer$ = timer(0, 30)
     let progressTimerSubscription: Subscription | null
 
     keyup$.subscribe({
       next(value) {
         // 按键抬起后，将锁打开
-        triggerLock = false
+        triggerLock = false;
         progressTimerSubscription && progressTimerSubscription.unsubscribe()
+        if (cancel) {
+          cancel()
+        }
       },
     })
 
