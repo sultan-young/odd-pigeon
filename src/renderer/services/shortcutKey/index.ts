@@ -103,15 +103,3 @@ class ShortCutKeyService {
 export {
   ShortCutKeyService,
 }
-
-const shortCutKeyService = new ShortCutKeyService();
-shortCutKeyService.registerLongPressEvent({
-  keycode: 'Meta', 
-  triggerTime: 1000, 
-  trigger: () => {
-    console.log('出现弹窗')
-  }, 
-  progress: (progress) => {
-    console.log(`当前进度---${progress}`)
-  }
-})

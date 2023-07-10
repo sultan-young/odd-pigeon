@@ -10,7 +10,6 @@ export function Gpt() {
   const [chatList, setChatList] = useState<ChatVO[]>([])
 
   useEffect(() => {
-    console.log(11111)
     apiServer.post('/api/openAi/chat').then(res => {
       setChatList(res.data)
     })

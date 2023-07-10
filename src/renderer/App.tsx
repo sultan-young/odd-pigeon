@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import {
   DesktopOutlined,
   FileOutlined,
@@ -7,11 +7,13 @@ import {
   UserOutlined,
 } from '@ant-design/icons'
 import type { MenuProps } from 'antd'
-import { Layout, Menu, theme } from 'antd'
+import { Layout, Menu, Modal, theme } from 'antd'
 import { MenuInfo } from './types/antd.type'
 import { Outlet, useLocation, useMatch, useMatches } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import { SwitchBox } from './components/SwitchBox'
+import { SwitchBox, openSwitchBoxPortal } from './components/SwitchBox'
+import { ShortCutKeyService } from './services/shortcutKey'
+import { useTitle } from './hooks/demo'
 
 const { Header, Content, Footer, Sider } = Layout
 
@@ -40,13 +42,15 @@ const items: MenuItem[] = [
   getItem('TODO', 'todo', <PieChartOutlined />, [getItem('今日事', 'today')]),
 ]
 
-export function App() {
+export const App = () => {
   const [collapsed, setCollapsed] = useState(false)
   const navigate = useNavigate()
   let location = useLocation()
   const match = useMatch('/app/*')
   const [openKeys, setOpenKeys] = useState([''])
   const [selectedKeys, setSelectedKeys] = useState(['GPT'])
+  const [fns, contextHolder] = openSwitchBoxPortal()
+
 
   const onOpenChange: MenuProps['onOpenChange'] = (keys) => {
     // 查找最新打开的
@@ -56,6 +60,21 @@ export function App() {
   }
 
   useEffect(() => {
+    const shortCutKeyService = new ShortCutKeyService();
+    shortCutKeyService.registerLongPressEvent({
+      keycode: 'Meta', 
+      triggerTime: 1000, 
+      trigger: () => {
+        fns.open()
+        // openSwitchBox()
+        // console.log('出现弹窗', visible)
+      }, 
+      progress: (progress) => {
+        // console.log(`当前进度---${progress}`)
+      }
+    })
+
+
     if (match) {
       const { params } = match
       const pathStr = params['*'] || ''
@@ -98,7 +117,8 @@ export function App() {
     //   <Layout style={{height: '100%'}}>
     //     <Content>
     <>
-      <SwitchBox></SwitchBox>
+    
+      {contextHolder}
       <Outlet></Outlet>
     </>
     //     </Content>
