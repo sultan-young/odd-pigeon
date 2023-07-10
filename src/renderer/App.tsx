@@ -63,11 +63,9 @@ export const App = () => {
     const shortCutKeyService = new ShortCutKeyService();
     shortCutKeyService.registerLongPressEvent({
       keycode: 'Meta', 
-      triggerTime: 1000, 
+      triggerTime: 300, 
       trigger: () => {
         fns.open()
-        // openSwitchBox()
-        // console.log('出现弹窗', visible)
       }, 
       progress: (progress) => {
         // console.log(`当前进度---${progress}`)
