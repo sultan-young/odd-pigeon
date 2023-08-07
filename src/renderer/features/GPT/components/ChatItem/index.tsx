@@ -9,7 +9,8 @@ interface IProps {
 
 export const ChatItem: React.FC<IProps> = (props) => {
   const { chatVO } = props
-  const isOnLeft = chatVO.role === Role.AI
+  console.log('chatVO: ', chatVO);
+  const isOnLeft = chatVO.role === Role.Assistant;
 
   return (
     <article
@@ -32,7 +33,7 @@ export const ChatItem: React.FC<IProps> = (props) => {
           className={styles['chat-container-main']}
           style={{ flexDirection: isOnLeft ? 'row' : 'row-reverse' }}
         >
-          <p className={styles.text}>{chatVO.content}</p>
+          <p className={styles.text}>{chatVO.text}</p>
         </div>
       </div>
     </article>
