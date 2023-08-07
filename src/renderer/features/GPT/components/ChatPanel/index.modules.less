@@ -1,0 +1,44 @@
+& .chat-area {
+  flex: 1;
+  padding: 20px;
+  overflow: auto;
+}
+& .bottom {
+  overflow: hidden;
+  padding: 0 20px;
+  padding-bottom: 40px;
+  & .input-area {
+    position: relative;
+    margin: 0 auto;
+    max-width: 768PX;
+    &-wrap {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      border-radius: 6px;
+      padding: 10px 16px;
+      box-shadow: var(--tw-ring-offset-shadow, 0 0 transparent),
+        var(--tw-ring-shadow, 0 0 transparent), var(--tw-shadow);
+      padding-right: 40px;
+      max-height: 200px;
+      overflow: auto;
+      & textarea {}
+    }
+    & .send-icon {
+      padding: 4px;
+      font-size: 20px;
+      border-radius: 4px;
+      position: absolute;
+      bottom: 14px;
+      right: 16px;
+      cursor: pointer;
+      &--enabled {
+        color: rgba(255, 255, 255);
+        background-color: rgb(25, 195, 125);
+      }
+      &--disabled {
+        color: rgba(172, 172, 190);
+      }
+    }
+  }
+}
+// @import url('@/styles/color.less');

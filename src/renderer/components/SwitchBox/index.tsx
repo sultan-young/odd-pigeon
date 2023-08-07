@@ -1,10 +1,28 @@
 import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
 import * as ReactDOM from 'react-dom'
 import styles from './index.modules.less'
-import { FeatureConfigList } from '@/router'
+import { FeatureConfigList, RouterConfig } from '@/router'
 import { useNavigate } from 'react-router-dom'
 import { createPortal } from 'react-dom'
 import { Progress } from 'antd'
+
+
+interface IConfig {
+  title: string,
+  path: string,
+  children?: IConfig[],
+  [pros: string]: any
+}
+const filterFeatureConfigList = (list: IConfig[]) => {
+  return list.filter(item => {
+    if (item.children?.length) {
+      item.children = filterFeatureConfigList(item.children)
+    }
+    return item.title;
+  })
+}
+
+
 
 const progressWrapStyles: React.CSSProperties = {
   display: 'flex',
@@ -28,7 +46,13 @@ export const SwitchBox = React.forwardRef<ElementsHolderRef>((props, ref) => {
   const [boxVisible, setBoxVisible] = useState(false)
   // 进度条进度
   const [percent, setProgressPercent] = useState<number>(0)
-  const [progressVisible, setProgressVisible] = useState(false)
+  const [progressVisible, setProgressVisible] = useState(false);
+  const [featureList, setFeatureList] = useState<IConfig[]>([]);
+
+  useEffect(() => {
+    setFeatureList(filterFeatureConfigList(FeatureConfigList as any))
+  }, [])
+  
 
   // 在组件顶层通过调用 useImperativeHandle 来自定义 ref 暴露出来的句柄：
   React.useImperativeHandle(
@@ -74,18 +98,18 @@ export const SwitchBox = React.forwardRef<ElementsHolderRef>((props, ref) => {
       {boxVisible ? (
         <div className={styles.overlay} onClick={clickOverlay}>
           <div className={styles.modal}>
-            {FeatureConfigList.map((feature) => {
-              if (feature.children) {
+            {featureList.map((feature) => {
+              if (feature.children?.length) {
                 return (
                   <div
                     className={`${styles.item} ${styles['app-container']}`}
-                    key={feature.key}
+                    key={feature.path}
                   >
                     {feature.children.map((item) => {
                       return (
                         <div
                           className={`${styles['app-item--mini-wrap']}`}
-                          key={item.key}
+                          key={item.path}
                         >
                           <div
                             className={`${styles['app-item--mini']}`}
@@ -108,7 +132,7 @@ export const SwitchBox = React.forwardRef<ElementsHolderRef>((props, ref) => {
                 <div
                   className={`${styles.item} ${styles['app-item']}`}
                   onClick={(event) => openApplication(feature.path, event)}
-                  key={feature.key}
+                  key={feature.path}
                 >
                   {feature.title}
                 </div>
