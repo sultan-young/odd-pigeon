@@ -6,8 +6,9 @@ import { Tools } from './features/Tools'
 import { Md5 } from './features/Tools/Md5'
 import { UrlParse } from './features/Tools/UrlParse'
 import { Today } from './features/TODO/Today'
-import { ChatGptSetting } from './features/GPT/components/Setting'
-import { ChatPanel } from './features/GPT/components/ChatPanel'
+import { ChatGptSetting } from './features/GPT/views/ChatSetting'
+import { ChatPanel } from './features/GPT/views/ChatPanel'
+import { ChatGptNew } from './features/GPT/views/ChatNew'
 
 const FeatureConfigList = [
   {
@@ -22,6 +23,10 @@ const FeatureConfigList = [
       {
         path: 'setting',
         element: <ChatGptSetting/>
+      },
+      {
+        path: 'new',
+        element: <ChatGptNew/>
       }
     ]
   },

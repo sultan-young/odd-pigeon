@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { ChatVO, Role } from '../../types'
 import apiServer from '@/services/apis'
 import styles from './index.modules.less'
-import { ChatItem } from '../ChatItem'
+import { ChatItem } from '../../widgets/ChatItem'
 import { SendOutlined } from '@ant-design/icons'
 
 export const ChatPanel: React.FC = () => {

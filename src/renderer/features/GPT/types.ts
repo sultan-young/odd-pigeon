@@ -1,10 +1,10 @@
 export enum Role {
     User,
-    AI,
+    Assistant,
 }
 
 export interface ChatVO {
-  content: string;
+  text: string;
   role: Role;
   timeStamp: number;
 }

@@ -7,8 +7,6 @@ import { PlusOutlined, SendOutlined, SettingOutlined } from '@ant-design/icons'
 import { NavLink, Outlet } from 'react-router-dom'
 
 export function Gpt() {
-  
-
   return (
     <Layout style={{ height: '100%' }}>
       <Sider
@@ -20,15 +18,23 @@ export function Gpt() {
       >
         <div className={styles.wrap}>
           {/* 创建新会话 */}
-          <Button ghost className={styles['new-chat-btn']}>New Chat</Button>
+          <NavLink to="new">
+            <Button ghost className={styles['new-chat-btn']}>
+              New Chat
+            </Button>
+          </NavLink>
           {/* 会话列表 */}
-          <div className={styles['chat-list-container']}>
-
-          </div>
+          <div className={styles['chat-list-container']}></div>
           {/* 个人配置区域 */}
           <div>
             <NavLink to="setting">
-              <Button ghost icon={<SettingOutlined/>}  style={{color: '#fff', width: '100%'}}>设置</Button>
+              <Button
+                ghost
+                icon={<SettingOutlined />}
+                style={{ color: '#fff', width: '100%' }}
+              >
+                设置
+              </Button>
             </NavLink>
           </div>
         </div>
